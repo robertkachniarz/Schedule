@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}"  lang="pl-PL">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Lecturers</title>
+</head>
+
+<body>
+<section layout:fragment="content">
+    <form autocomplete="off" action="#" th:action="@{/addlecturer}" th:object="${lecturer}" method="post" role="form">
+
+    Tytuł naukowy
+        <label>
+            <select th:field="*{academicTitle}" name="academicTitle">
+                <option th:text="'dr'" th:value="dr"></option>
+                <option th:text="'dr&nbsp;hab.'" th:value="'dr&nbsp;hab.'"></option>
+                <option th:text="'mgr'" th:value="mgr"></option>
+                <option th:text="'prof.&nbsp;dr&nbsp;hab.'" th:value="'prof.&nbsp;dr&nbsp;hab.'"></option>
+            </select>
+        </label>
+
+    <br>
+    Imię
+    <input type="text" th:field="*{firstname}" name="firstname"><br>
+    Nazwisko
+    <input type="text" th:field="*{lastname}" name="lastname"><br>
+
+    <input type="submit" value="Zapisz">
+</form>
+</section>
+
+</body>
+</html>

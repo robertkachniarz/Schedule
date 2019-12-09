@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html  lang="pl-PL" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+<section layout:fragment="content">
+<table th:if="${lecturerList}" border="1">
+    <tr bgcolor="#87cefa"><td>Tytuł</td><td>Imię</td><td>Nazwisko</td><td>Usuń</td><td>Edytuj</td></tr>
+    <tr th:each="lecturer : ${lecturerList}" width="500 px">
+        <td th:text="${lecturer.getAcademicTitle()}" width="100 px">Tytuł</td>
+        <td th:text="${lecturer.getFirstname()}" width="100 px">Imię</td>
+        <td th:text="${lecturer.getLastname()}" width="100 px">Nazwisko</td>
+        <td width="100 px"><form th:action="@{'/delete/' + ${lecturer.getId()}}" method="post" th:align="left">
+            <input type="submit" value="Usuń"></form></td>
+            <td width="100 px"><form th:action="@{'/update/' + ${lecturer.getId()}}" method="get">
+            <input type="submit" value="Edytuj"></form> </td></tr>
+</table>
+
+</section>
+</body>
+</html>

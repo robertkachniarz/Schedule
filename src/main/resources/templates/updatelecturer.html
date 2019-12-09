@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html  lang="pl-PL" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Update Lecturer</title>
+</head>
+
+<body>
+<section layout:fragment="content">
+<form autocomplete="off" action="#" th:action="@{'/updatelecturer/' + ${lecturer.getId()}}" th:object="${lecturer}" method="post" role="form">
+
+    Tytuł naukowy
+
+    <br>
+    Imię
+    <input type="text" th:field="*{firstname}" name="firstname" th:value="${lecturer.getFirstname()}"><br>
+    Nazwisko
+    <input type="text" th:field="*{lastname}" name="lastname" th:value="${lecturer.getLastname()}"><br>
+
+    <label>
+        <select th:field="*{academicTitle}" name="academicTitle" th:value="${lecturer.getAcademicTitle()}">
+            <option th:text="'dr'" th:value="dr"></option>
+            <option th:text="'dr&nbsp;hab.'" th:value="'dr&nbsp;hab.'"></option>
+            <option th:text="'mgr'" th:value="mgr"></option>
+            <option th:text="'prof.&nbsp;dr&nbsp;hab.'" th:value="'prof.&nbsp;dr&nbsp;hab.'"></option>
+        </select>
+    </label>
+    <input type="submit" value="Aktualizuj">
+</form>
+</section>
+</body>
+</html>
